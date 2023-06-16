@@ -12,10 +12,10 @@
             <div>
               <ol>
                 <li>
-                  <a href="home.html"><ion-icon name="home-outline"></ion-icon></a>
+                  <a href="{{ route('home') }}"><ion-icon name="home-outline"></ion-icon></a>
                 </li>
                 <li>
-                  <a href="newpost.html"><ion-icon name="add-outline"></ion-icon></a>
+                  <a href="{{route('newpost')}}"><ion-icon name="add-outline"></ion-icon></a>
                 </li>
               </ol>
             </div>
@@ -31,7 +31,7 @@
               </li>
               <li>
                 
-                <a href="ownprof.html"><img class="circle" src="{{ asset('assets/images/greg.jpg') }}" alt="" /></a>
+                <a href="{{ route('ownprof')}}"><img class="circle" src="{{ asset('assets/images/greg.jpg') }}" alt="" /></a>
               </li>
               <li>
                 <a href="{{ route('analysis') }}"><ion-icon name="analytics-outline"></ion-icon></a>
@@ -41,6 +41,7 @@
         <br><br><br>
     <body>
         @yield('content')
+            <script src="{{ asset('assets/my_chart.js') }}"></script>
             <script type="module" src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js') }}"></script>
             <script nomodule src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js') }}"></script>
     </body>

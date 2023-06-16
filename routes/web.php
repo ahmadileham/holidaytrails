@@ -19,9 +19,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/babi', function () {
-    return view('h.newpost');
-});
+// Route::get('/babi', function () {
+//     return view('h.newpost');
+// });
 
 
 
@@ -33,12 +33,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::get('/homepage', [ProfileController::class, 'home'])->name('home');
+    Route::get('/analysis', function(){return view('h.analysis');})->name('analysis');
+    Route::get('/editpost', function(){return view('h.editpost');})->name('editpost');
+    Route::get('/viewprofile', function(){return view('h.othersprof');})->name('othersprof');
+    Route::get('/myprofile', function(){return view('h.ownprof');})->name('ownprof');
+    Route::get('/addpost', function(){return view('h.newpost');})->name('newpost');
+    Route::get('/viewpost', function(){return view('h.viewpost');})->name('viewpost');
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/homepage', [ProfileController::class, 'home'])->name('home');
-Route::get('/analysis', [ProfileController::class, 'analysis'])->name('analysis');
+
 

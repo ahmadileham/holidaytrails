@@ -73,7 +73,7 @@ class ProfileController extends Controller
         return redirect('/login');
     }
 
-    public function analysis(){
-        return view('h.analysis');
-    }
+    // public function analysis(){
+    //     return view('h.analysis');
+    // }
 }

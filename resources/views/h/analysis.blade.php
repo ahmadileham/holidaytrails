@@ -1,8 +1,8 @@
 @extends('h.master')
-@section('title','Anal')
+@section('title','Analysis')
 
 @section('content')
-    <p id="engage"><strong>Engagement <br> <br><img src="images/greg.jpg" id="Profile"alt=""></strong></p>
+    <p id="engage"><strong>Engagement <br> <br><img src="{{ asset('assets/images/greg.jpg') }}" id="Profile"alt=""></strong></p>
     <p class="faded">@Greg</p> <br><br><br>
     <div class="charts">
       <div class="chart">
@@ -24,6 +24,4 @@
         <canvas id="myChart3"></canvas>
       </div>
     </div>
-    
-    <script src="{{ asset('assets/my_chart.js') }}"></script>
 @endsection
