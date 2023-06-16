@@ -1,0 +1,228 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+.circle{
+    border-radius: 50% ;
+    width: 35px;
+    height: 35px;
+    display: block;
+}
+
+#Profile{
+    border-radius: 50% ;
+    width: 101px;
+    height: 97px;
+    margin: auto;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.middle{
+    text-align: center;
+}
+
+
+
+.faded{
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 200;
+    color: gray;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+
+#follow{
+    margin-top: 8px;
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+#pics{
+    margin-top: 90px;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid red;
+  margin: 30px 0;
+}
+
+
+input[type=search]{
+    background: url(images/search-outline.svg) no-repeat scroll left;
+    width: 750px;
+    height: 33px;
+    padding-left: 50px;
+    background-position: 10px;
+    font-size: 17px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+::placeholder{
+    color: black;
+}
+
+.box{
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+
+
+.back{
+    margin-left: 10px;
+    margin-top: 8px;
+    color: gray;
+    width: 38px;
+    height: 38px;
+    
+}
+
+.charts{
+    display: flex;
+    margin-bottom: 50px;
+}
+canvas{
+    margin: 0 auto;
+    width: 80%;
+    }
+ 
+#myChart3{
+     margin: 0 auto;
+     padding-bottom: 100px;
+    width: 100%;
+    }
+  
+
+.chart .faded{
+    text-align: left;
+    font-size: 15px;
+}
+
+#followers{
+    text-align: center;
+    position: relative;
+    top: 450px;
+    font-size: 45px;
+}
+
+#total{
+    text-align: center;
+    position: relative;
+    top: 450px;
+}
+
+.charts .chart{
+    padding: 20px;
+    text-align: left;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgb(0 0 0 / 40%);
+    width: 100%;
+    height: 430px;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+
+nav{
+    z-index: 1;
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px ;
+    position: fixed;
+    background-color: #FFC107;
+    
+}
+
+
+
+#engage{
+    font-size: 20px;
+    text-align: center;
+}
+
+
+nav li{
+    display: inline-block;
+    margin-inline: 20px;
+    
+}
+
+.each{
+    margin: 20px;
+}
+
+.o{
+    width: 24px;
+    height: 24px;
+}
+
+.row {
+    margin-top: 5px;
+    display: flex;
+  }
+  
+  .column {
+    flex: 33.33%;
+    padding: 25px;
+    
+  }
+
+  .column img{
+    height: 595px;
+    border-radius: 15px;
+    display: block;
+  }
+
+  .column .mak{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 40px; 
+    left: 140px;
+    color: white;
+    
+    
+  }
+
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+}
+
+ion-icon {
+    color: black;
+    width: 30px;
+    height: 30px;
+  }
+
+  .btn {
+    width: 15%;
+    height: 20px;
+    background: grey;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+}
