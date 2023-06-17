@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
 });
 
+Route::post('store', [PostController::class, 'store']);
+
 require __DIR__.'/auth.php';
 
 
