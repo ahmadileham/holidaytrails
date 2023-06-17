@@ -8,7 +8,7 @@
                     <label for="file"><ion-icon name="cloud-upload-outline"></ion-icon><br>Drag and drop or click<br>to upload</label>
                 </div>
 
-                <form class="createpost" method="POST" action="{{ url('store') }}">
+                <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
                     @csrf
                     <div class="postinput">
                         <div class="input-box">
@@ -23,9 +23,12 @@
                             <span class="details">Location</span>
                             <input type="text" name="location" placeholder="Where was this taken?" required>
                         </div>
+                        <div class="input-box">
+                            <input class="form-control" name="image" type="file" id="image">
+                        </div>
                         <div class="buttonsubmit">
                           <input type="submit" value="Publish Post"/>
-                      </div>
+                        </div>
                     </div>
                 </form>
             </div>
