@@ -7,7 +7,7 @@
     <div class="middle">
       <img  id="Profile" src="{{ asset('assets/images/greg.jpg') }}" alt="">
       <p><strong>22 | PASUM UM BDCS</strong><p>@Greg</p><p id="follow"><strong>50.2k followers . 1 following</strong></p></p>
-      <a href="update user profile.html" class="each"><ion-icon name="pencil-outline" class="o"></ion-icon></a>
+      <a href="{{route('profile.edit')}}" class="each"><ion-icon name="pencil-outline" class="o"></ion-icon></a>
       <a href="useranalysis.html" class="each"><ion-icon name="share-social-outline" class="o"></ion-icon></a>
       
       

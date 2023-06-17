@@ -25,12 +25,12 @@
         <div class="commentdiv">
             <div class="poster">
 
-                <div class="profile-pic-container" href="{{route('ownprof')}}">
+                <a href="{{route('ownprof')}}"><div class="profile-pic-container" ></a>
                     <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
                 </div>
 
                 <div>
-                    <span href="{{route('ownprof')}}" class="username">John Doe James</span>
+                    <a href="{{route('ownprof')}}" ><span class="username">John Doe James</span></a>
                     <div class="ratingdisplay">
                             <div class="ratings">
                                 <ion-icon class="dummyrating" name="star"></ion-icon>
@@ -86,9 +86,9 @@
             <div class="commentbox">
                     <div class="cmtholder">
                         <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
+                            <a href="{{route('othersprof')}}"><div class="profile-pic-containercmt" >
                                 <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
-                            </div>
+                            </div></a>
 
                             <div>
                                 <p class="cmttext">The spectacular mirage occurs when the sand and silt
@@ -101,9 +101,9 @@
                         </div>
 
                         <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
+                            <a href="{{route('othersprof')}}"><div class="profile-pic-containercmt" >
                                 <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
-                            </div>
+                            </div></a>
                         
                             <div>
                                 <p class="cmttext">The spectacular mirage occurs when the sand and silt
@@ -116,9 +116,9 @@
                         </div>
 
                         <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
+                           <a href="{{route('othersprof')}}"><div class="profile-pic-containercmt" >
                                 <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
-                            </div>
+                            </div></a>
                         
                             <div>
                                 <p class="cmttext">The spectacular mirage occurs when the sand and silt
