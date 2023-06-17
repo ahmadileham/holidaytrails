@@ -37,6 +37,7 @@ class UsersTableSeeder extends Seeder
                 'name'=>'bo',
                 'email'=>'bo@icloud.com',
                 'password'=>Hash::make('111'),
+                // 'photo'=>'https://via.placeholder.com/60x60.png/00aa33?text=ducimus'
             ], 
         ]);
     }

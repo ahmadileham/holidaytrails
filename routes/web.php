@@ -35,12 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/homepage', [ProfileController::class, 'home'])->name('home');
-    Route::get('/analysis', function(){return view('h.analysis');})->name('analysis');
-    Route::get('/editpost', function(){return view('h.editpost');})->name('editpost');
-    Route::get('/viewprofile', function(){return view('h.othersprof');})->name('othersprof');
-    Route::get('/myprofile', function(){return view('h.ownprof');})->name('ownprof');
+    Route::get('/analysis', [ProfileController::class, 'analysis'])->name('analysis');
+    Route::get('/editpost', [ProfileController::class, 'editpost'])->name('editpost');
+    Route::get('/viewprofile', [ProfileController::class, 'othersprof'])->name('othersprof');
+    Route::get('/myprofile', [ProfileController::class, 'ownprof'])->name('ownprof');
     Route::get('/newpost', [PostController::class, 'create'])->name('newpost');
-    Route::get('/viewpost', function(){return view('h.viewpost');})->name('viewpost');
+    Route::get('/viewpost', [ProfileController::class, 'viewpost'])->name('viewpost');
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
 });
 

@@ -3,8 +3,13 @@
 
 @section('content')
             <div class="container">
-                <div id="fileuploadbutton">
-                    <input type="file" id="file"/>
+                @if (session('message'))
+                    <p>
+                        {{ session('message') }}
+                    </p>
+                 @endif
+                <div id="fileuploadbutton" class="input-box">
+                    <input type="file" id="image" name="image" class="form-control"/>
                     <label for="file"><ion-icon name="cloud-upload-outline"></ion-icon><br>Drag and drop or click<br>to upload</label>
                 </div>
 

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function create(){
-
-        return view('h.posts.newpost');
+    public function newpost(){
+        $user = Auth::user();
+        return view('h.posts.newpost',compact('user'));
     }
 
     public function store(Request $request){
@@ -29,8 +30,9 @@ class PostController extends Controller
         // $post->save();
 
         // $this->uploadImage($request, $post->id);
-
+        $user = Auth::user(); 
         $requestData = $request->all();
+        $requestData['userid'] = $user->id;
         $fileName = time().$request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('images', $fileName, 'public');
         $requestData["image"] = '/storage/' .$path;

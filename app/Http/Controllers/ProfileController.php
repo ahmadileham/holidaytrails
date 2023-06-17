@@ -59,7 +59,8 @@ class ProfileController extends Controller
     }
 
     public function home(){
-        return view('h.home');
+        $user = Auth::user();
+        return view('h.home',compact('user'));
     }
 
     public function UserLogout(Request $request)
@@ -76,4 +77,29 @@ class ProfileController extends Controller
     // public function analysis(){
     //     return view('h.analysis');
     // }
+
+    public function editpost(){
+        $user = Auth::user();
+        return view('h.editpost',compact('user'));
+    }
+
+    public function analysis(){
+        $user = Auth::user();
+        return view('h.analysis',compact('user'));
+    }
+
+    public function othersprof(){
+        $user = Auth::user();
+        return view('h.othersprof',compact('user'));
+    }
+
+    public function ownprof(){
+        $user = Auth::user();
+        return view('h.ownprof',compact('user'));
+    }
+
+    public function viewpost(){
+        $user = Auth::user();
+        return view('h.viewpost',compact('user'));
+    }
 }

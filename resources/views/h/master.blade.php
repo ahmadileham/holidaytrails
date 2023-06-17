@@ -15,7 +15,7 @@
                   <a href="{{ route('home') }}"><ion-icon name="home-outline"></ion-icon></a>
                 </li>
                 <li>
-                  <a href="{{route('newpost')}}"><ion-icon name="add-outline"></ion-icon></a>
+                  <a href="{{ route('newpost') }}"><ion-icon name="add-outline"></ion-icon></a>
                 </li>
               </ol>
             </div>
@@ -25,16 +25,19 @@
             </div>
             <ol>
               <li>
-                <a href="{{ route('user.logout') }}"
-                  ><ion-icon name="log-out-outline"></ion-icon>
-                </a>
-              </li>
-              <li>
-                
-                <a href="{{ route('ownprof')}}"><img class="circle" src="{{ asset('assets/images/greg.jpg') }}" alt="" /></a>
+                    @if ($user->photo)
+                        <a href="{{ route('ownprof')}}"><img class="circle" src="{{ $user->photo }}" alt="Profile Picture"></a>
+                    @else
+                        <a href="{{ route('ownprof')}}"><ion-icon name="person-outline"></ion-icon></a>
+                    @endif
               </li>
               <li>
                 <a href="{{ route('analysis') }}"><ion-icon name="analytics-outline"></ion-icon></a>
+              </li>
+              <li>
+                <a href="{{ route('user.logout') }}"
+                  ><ion-icon name="log-out-outline"></ion-icon>
+                </a>
               </li>
             </ol>
           </nav>
