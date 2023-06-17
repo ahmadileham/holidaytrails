@@ -19,24 +19,28 @@ class UsersTableSeeder extends Seeder
                 'name'=>'Shazwy',
                 'email'=>'wywy@icloud.com',
                 'password'=>Hash::make('111'),
+                'about'=>'am the GOAT'
             ],
 
             [
                 'name'=>'umar',
                 'email'=>'umar@icloud.com',
                 'password'=>Hash::make('123'),
+                'about'=>'budax jambu'
             ],
 
             [
                 'name'=>'wan',
                 'email'=>'wan@icloud.com',
                 'password'=>Hash::make('111'),
+                'about'=>'saya sado'
             ],
 
             [
                 'name'=>'bo',
                 'email'=>'bo@icloud.com',
                 'password'=>Hash::make('111'),
+                'about'=>'bonen'
                 // 'photo'=>'https://via.placeholder.com/60x60.png/00aa33?text=ducimus'
             ], 
         ]);
