@@ -4,7 +4,10 @@
 
 @section('content')
             <div class="pin_container">
-                <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia2.jpg') }}" alt="asia2"></a></div>
+                @foreach($posts as $key=>$post)
+                    <div class="card card_medium"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia.jpg') }}" alt="asia"></a></div>
+                @endforeach
+                <!-- <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia2.jpg') }}" alt="asia2"></a></div>
                 <div class="card card_medium"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia.jpg') }}" alt="asia"></a></div>
                 <div class="card card_large"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/winter.jpg') }}" alt="winter"></a></div>
                 <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/mountains.jpg') }}" alt="mountains"></a></div>
@@ -20,6 +23,6 @@
                 <div class="card card_large"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/louvre.jpg') }}" alt="louvre"></a></div>
                 <div class="card card_large"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/newyork.jpg') }}" alt="newyork"></a></div>
                 <div class="card card_large"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/france.JPG') }}" alt="france"></a></div>
-                <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/morocco.jpg') }}" alt="morocco"></a></div>
+                <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/morocco.jpg') }}" alt="morocco"></a></div> -->
             </div>
 @endsection

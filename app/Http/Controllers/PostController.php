@@ -13,6 +13,12 @@ class PostController extends Controller
         return view('h.posts.newpost',compact('user'));
     }
 
+    public function home(){
+        $posts = Post::all();
+        $user = Auth::user();
+        return view('h.home',compact('user'),['posts'=>$posts]);
+    }
+
     public function store(Request $request){
 
         // $image_image ="";
@@ -33,7 +39,7 @@ class PostController extends Controller
         $user = Auth::user(); 
         $requestData = $request->all();
         $requestData['userid'] = $user->id;
-        $fileName = time().$request->file('image')->getClientOriginalName();
+        $fileName = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('images', $fileName, 'public');
         $requestData["image"] = '/storage/' .$path;
         Post::create($requestData);
