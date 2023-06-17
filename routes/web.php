@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/editpost', function(){return view('h.editpost');})->name('editpost');
     Route::get('/viewprofile', function(){return view('h.othersprof');})->name('othersprof');
     Route::get('/myprofile', function(){return view('h.ownprof');})->name('ownprof');
-    Route::get('/addpost', function(){return view('h.newpost');})->name('newpost');
+    Route::get('/newpost', [PostController::class, 'create'])->name('newpost');
     Route::get('/viewpost', function(){return view('h.viewpost');})->name('viewpost');
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
 });
