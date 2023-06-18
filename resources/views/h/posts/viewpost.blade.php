@@ -108,11 +108,15 @@
                             <div>
                                 <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo" class="myprofile-pic-container">
                             </div>
-                        </div>
-                        <!-- <input type="hidden" value="{{$post->id}}" name="post_id"> -->
-                        <input type=">
-                        <div>
-                            <input type="text" class="my-textfield" id="body" name="body" placeholder="Type your comment...">
+                            
+                            <div>
+                                <input type="text" class="my-textfield" id="body" name="body" placeholder="Type your comment...">
+
+                                <button type="submit" style="background-color: transparent; border:none;">
+                                    <ion-icon class="send" name="send"></ion-icon>
+                                </button>
+
+                            </div>
                         </div>
                     </form>
             </div>
