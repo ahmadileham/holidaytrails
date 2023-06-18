@@ -7,6 +7,25 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
         <link rel="shortcut icon" type="x-icon" href="{{ asset('assets/images/icon.png') }}">
+
+        <style>
+          #results{
+            padding-left: 0;
+            list-style: none;
+            margin: 0;
+            box-shadow: 5px 5px 15px grey;
+            max-width: 300px;
+          }
+          #results>li{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+          }
+          #results>li:hover{
+            background-color: #e2e8f0;
+
+          }
+        </style>
     </head>
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/style.css') }}">
         <nav>
@@ -21,8 +40,45 @@
               </ol>
             </div>
             <div>
-              <input type="search" placeholder="Search" />
+              <input type="search" placeholder="Search" id="searchbar"/>
               <span class="fa fa-search"></span>
+              <ul id="results" style="z-index: 100;"></ul>
+              <script>
+                const resultsList = document.getElementByID('results');
+
+                function createLi(searchResult){
+                  const li = document.createElement('li');
+                  const link = document.creatElement('a');
+                  link.href = searchResult.view_link;
+                  link.textContent = searchResult.model;
+                  const h4 = document.createElement('h4');
+                  h4.appendChild(link);
+                  const span = document.createElement('span');
+                  span.textContent = searchResult.match;
+
+                  li.appendChild(h4);
+                  li.appendChild(span);
+                  return li;
+                }
+
+                document.getElementById('searchbar').addEventListener('input', function(event){
+                  event.preventDefault();
+                  const searched = event.target.value;
+
+                  fetch('/api/search?search=' + searched, {
+                    method: 'GET'
+                  }).then((response) => {
+                    return response.json();
+                  }).then((response) => {
+                    const results = response.data;
+                    resultsList.innerHTML = "";
+
+                    results.forEach((result) => {
+                      resultsList.appendChild(createLi(result));
+                    })
+                  })
+                })
+                </script>
             </div>
             <ol>
               <li>

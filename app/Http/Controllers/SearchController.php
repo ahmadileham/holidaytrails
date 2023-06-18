@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
+use Symfony\Component\Finder\SplFileInfo;
 
 class SearchController extends Controller
 {

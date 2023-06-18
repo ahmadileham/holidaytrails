@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('location');
             $table->unsignedBigInteger('userid');
             $table->string('image');
-            $table->foreign('userid')->references('id')->on('users');
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
             $table->tinyInteger('is_featured')->default(0);
             $table->timestamps();
         });
