@@ -160,4 +160,5 @@ class ProfileController extends Controller
 
         return back()->with($notification);
     }
+
 }

@@ -7,9 +7,10 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+
 class PostController extends Controller
 {
-    public function newpost(){
+    public function create(){
         // $user = Auth::user();
         return view('h.posts.newpost');
     }
@@ -37,5 +38,21 @@ class PostController extends Controller
         $user = Auth::user();
 
         return view('h.posts.viewpost', ['post'=>$post], compact('user'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Retrieve the user IDs matching the search query
+        $userIds = User::where('name', 'like', "%$query%")->pluck('id');
+
+        // Retrieve the posts matching the search query
+        $posts = Post::where('title', 'like', "%$query%")
+            ->orWhere('location', 'like', "%$query%")
+            ->orWhereIn('userid', $userIds)
+            ->get();
+
+        return view('h.posts.search', compact('posts'));
     }
 }

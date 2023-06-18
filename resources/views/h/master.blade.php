@@ -39,7 +39,7 @@
                 </li>
               </ol>
             </div>
-            <div>
+            <!-- <div>
               <input type="search" placeholder="Search" id="searchbar"/>
               <span class="fa fa-search"></span>
               <ul id="results" style="z-index: 100;"></ul>
@@ -79,7 +79,11 @@
                   })
                 })
                 </script>
-            </div>
+            </div> -->
+            <form action="{{ route('posts.search') }}" method="GET">
+                <input type="text" name="query" placeholder="Search by title, location, or name">
+                <button type="submit">Search</button>
+            </form>
             <ol>
               <li>
 
