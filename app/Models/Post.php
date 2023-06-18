@@ -24,4 +24,9 @@ class Post extends Model
     public function toSearchableArray(){
         return $this->only(self::SEARCHABLE_FIELDS);
     }
+
+    public function comments(){
+
+        return $this->hasMany(Comment::class);
+    }
 }

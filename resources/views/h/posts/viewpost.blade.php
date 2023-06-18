@@ -79,50 +79,19 @@
 
             <div class="commentbox">
                     <div class="cmtholder">
-                        <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
-                                <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
+                        @foreach($post->comments as $key => $comment)
+                            <div class="cmt">
+                                <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
+                                    <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
+                                </div>
+
+                                <div>
+                                    <p class="cmttext">{{ $comment->body }}</p>
+                                </div>
+
                             </div>
 
-                            <div>
-                                <p class="cmttext">The spectacular mirage occurs when the sand and silt
-                                sediments on the ocean floor get sucked down under the
-                                influence of stronger underwater currents between the opening
-                                of the reefs. The scene resembles the flush of a waterfall
-                                cascading into a massive underwater pit.</p>
-                            </div>
-
-                        </div>
-
-                        <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
-                                <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
-                            </div>
-                        
-                            <div>
-                                <p class="cmttext">The spectacular mirage occurs when the sand and silt
-                                    sediments on the ocean floor get sucked down under the
-                                    influence of stronger underwater currents between the opening
-                                    of the reefs. The scene resembles the flush of a waterfall
-                                    cascading into a massive underwater pit.</p>
-                            </div>
-                        
-                        </div>
-
-                        <div class="cmt">
-                            <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
-                                <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
-                            </div>
-                        
-                            <div>
-                                <p class="cmttext">The spectacular mirage occurs when the sand and silt
-                                    sediments on the ocean floor get sucked down under the
-                                    influence of stronger underwater currents between the opening
-                                    of the reefs. The scene resembles the flush of a waterfall
-                                    cascading into a massive underwater pit.</p>
-                            </div>
-                        
-                        </div>
+                        @endforeach
                     </div>
 
                     <hr>
