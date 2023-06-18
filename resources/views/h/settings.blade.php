@@ -76,8 +76,9 @@
                     
                     <button type="submit" class="btn" style="margin-top: 20px;">Save Changes</button>
         </form>
+        <a href="{{ route('profile.pass') }}"><button class="btn" style="margin-top: 20px;">Change password</button></a>
 
-                    <!-- <button type="submit" class="btn" style="margin-top: 20px;float: right;">Deactivate</button> -->
+                    <a href="{{route('profile.destroy')}}"> <button class="btn" style="margin-top: 20px;float: right;">Deactivate</button></a>
 
     </div>
     <script

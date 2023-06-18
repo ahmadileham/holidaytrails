@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
     Route::get('/settings', [ProfileController::class, 'settings'])->name('profile.settings');
     Route::post('/settings/store', [ProfileController::class, 'settingsStore'])->name('profle.store');
+    Route::get('/change/password', [ProfileController::class, 'profilePass'])->name('profile.pass');
+    Route::post('/update/password', [ProfileController::class, 'updatePassword'])->name('profle.update.pass');
+    Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 

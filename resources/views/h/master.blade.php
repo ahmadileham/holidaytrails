@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@yield('title', 'Default Title')</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
         <link rel="shortcut icon" type="x-icon" href="{{ asset('assets/images/icon.png') }}">
     </head>
@@ -25,6 +26,11 @@
             </div>
             <ol>
               <li>
+
+              @php
+              $id = Auth::user()->id;
+              $profileData=App\Models\User::find($id);
+              @endphp
                     @if (!empty($profileData->photo))
                         <a href="{{ route('ownprof')}}"><img class="circle" src="{{ (!empty($profileData->photo)) ? url('upload/'.$profileData->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture"></a>
                     @else
@@ -44,6 +50,8 @@
         <br><br><br>
     <body>
         @yield('content')
+        
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script>
             @if(Session::has('message'))
             var type = "{{ Session::get('alert-type','info') }}"
@@ -69,5 +77,6 @@
             <script src="{{ asset('assets/my_chart.js') }}"></script>
             <script type="module" src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js') }}"></script>
             <script nomodule src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js') }}"></script>
+            
     </body>
 </html>

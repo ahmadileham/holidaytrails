@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -60,10 +61,7 @@ class ProfileController extends Controller
     }
 
     public function home(){
-        // $user = Auth::user();
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
-        return view('h.home',compact('profileData'));
+        return view('h.home');
     }
 
     public function UserLogout(Request $request)
@@ -82,38 +80,25 @@ class ProfileController extends Controller
     // }
 
     public function editpost(){
-        // $user = Auth::user();
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
-        return view('h.editpost',compact('profileData'));
+        return view('h.editpost');
     }
 
     public function analysis(){
-        // $user = Auth::user();
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
-        return view('h.analysis',compact('profileData'));
+        return view('h.analysis');
     }
 
     public function othersprof(){
-        // $user = Auth::user();
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
-        return view('h.othersprof',compact('profileData'));
+        return view('h.othersprof');
     }
 
     public function ownprof(){
-        // $user = Auth::user();
         $id = Auth::user()->id;
         $profileData = User::find($id);
         return view('h.ownprof',compact('profileData'));
     }
 
     public function viewpost(){
-        // $user = Auth::user();
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
-        return view('h.viewpost',compact('profileData'));
+        return view('h.viewpost');
     }
 
      public function settings(){
@@ -133,6 +118,7 @@ class ProfileController extends Controller
 
         if($request->file('photo')){
             $file = $request->file('photo');
+            @unlink(public_path('upload/'.$data->photo));
             $filename = date('YdmHi').$file->getClientOriginalName();
             $file->move(public_path('upload'),$filename);
             $data['photo']=$filename;
@@ -141,5 +127,37 @@ class ProfileController extends Controller
         $data->save();
 
         return redirect()->back();
+    }
+
+    public function profilePass(){
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.changePass',compact('profileData'));
+    }
+
+    public function updatePassword(Request $request){
+        $request->validate([
+            'old_password' => 'required',
+            'new_password'=>'required|confirmed'
+        ]);
+
+        if(!Hash::check($request->old_password, auth::user()->password)){
+            $notification = array(
+                'message' => 'Old Password Does Not Match.',
+                'alert-type' => 'error'   
+            );
+            return back()->with($notification);
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password'=>Hash::make($request->new_password)
+        ]);
+
+        $notification = array(
+                'message' => 'Ngam',
+                'alert-type' => 'success'   
+            );
+
+        return back()->with($notification);
     }
 }

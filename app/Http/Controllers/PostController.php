@@ -10,10 +10,8 @@ use App\Models\User;
 class PostController extends Controller
 {
     public function newpost(){
-        $id = Auth::user()->id;
-        $profileData = User::find($id);
         // $user = Auth::user();
-        return view('h.posts.newpost',compact('profileData'));
+        return view('h.posts.newpost');
     }
 
     public function store(Request $request){

@@ -3,12 +3,12 @@
 @section('title','My profile')
 
 @section('content')
-
+    <br><br><br>
     <div class="middle">
-      <img  id="Profile" src="{{ asset('assets/images/greg.jpg') }}" alt="">
-      <p><strong>22 | PASUM UM BDCS</strong><p>@Greg</p><p id="follow"><strong>50.2k followers . 1 following</strong></p></p>
+      <a href="{{ route('ownprof')}}"><img id="Profile" src="{{ (!empty($profileData->photo)) ? url('upload/'.$profileData->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture"></a>
+      <p><strong>{{$profileData->name}}</strong><p>{{$profileData->about}}</p>
       <a href="{{route('profile.settings')}}" class="each"><ion-icon name="pencil-outline" class="o"></ion-icon></a>
-      <a href="useranalysis.html" class="each"><ion-icon name="share-social-outline" class="o"></ion-icon></a>
+    </div>
       
       
 
