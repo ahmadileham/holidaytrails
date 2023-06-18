@@ -21,23 +21,7 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-
-        // $image_image ="";
-        // if($request->hasFile('image')){
-        //     $image = $request->file('image');
-        //     $image_image = $image->getClientOriginalName();
-        // }
-
-        // $post = new Post();
-        // $post->title = $request->title;
-        // $post->description = $request->description;
-        // $post->location = $request->location;
-        // $post->image = $image_image;
-
-        // $post->save();
-
-        // $this->uploadImage($request, $post->id);
-        $user = Auth::user(); 
+        $user = Auth::user();
         $requestData = $request->all();
         $requestData['userid'] = $user->id;
         $fileName = $request->file('image')->getClientOriginalName();
@@ -54,22 +38,4 @@ class PostController extends Controller
 
         return view('h.posts.viewpost', ['post'=>$post], compact('user'));
     }
-    // public function uploadImage(Request $request, $post_id){
-
-    //     if($request->hasFile('image')){
-
-    //         $path = public_path("post_images/post_$post_id");
-
-    //         if(! file_exists($path)){
-    //             mkdir($path, 0777, true);
-    //         }
-
-    //         $image = $request->file('image');
-    //         $image_image = $image->getClientOriginalName();
-
-    //         $image->move($path, $image_image);
-    //     }
-
-    // }
-
 }

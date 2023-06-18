@@ -130,14 +130,15 @@
                     <!-- comment form -->
                     <div class="newcommentbox">
 
-                        <form id="comment-form" action = "{{ url('comment/store') }}" class="comment-form" method="post">
+                        <form id="comment-form" action = "{{route('comment.store', ['post' => $post->id])}}" class="comment-form" method="post">
                             @csrf
                         <div class="mydp">
                             <div class="myprofile-pic-container">
                                 <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
                             </div>
                         </div>
-
+                        <!-- <input type="hidden" value="{{$post->id}}" name="post_id"> -->
+                        <input type=">
                         <div>
                             <input type="text" class="my-textfield" id="body" name="body" placeholder="Type your comment...">
                         </div>

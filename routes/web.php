@@ -54,6 +54,6 @@ Route::post('store', [PostController::class, 'store']);
 require __DIR__.'/auth.php';
 
 //Comments
-Route::post('comment/store', [CommentController::class, 'store']);
+Route::post('comment/{post}', 'App\Http\Controllers\CommentController@store')->name('comment.store');
 
 
