@@ -48,10 +48,10 @@ class PostController extends Controller
     }
 
     public function viewpost($id){
-        $user = Auth::user();
         $post = Post::find($id);
+        $user = Auth::user();
 
-        return view('h.viewpost', ['post'=>$post], compact('user'));
+        return view('h.posts.viewpost', ['post'=>$post], compact('user'));
     }
     // public function uploadImage(Request $request, $post_id){
 

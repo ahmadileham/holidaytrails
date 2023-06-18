@@ -9,15 +9,15 @@
 
             <div class="photo-location">
                 <ion-icon class="locationicon" name="location-outline"></ion-icon>
-                <location class="location">MAURITIUS ISLAND</location>
+                <location class="location">{{ $post->location }}</location>
             </div>
         
             <div class="image-container">
-                <img class="image" src="{{ asset('assets/images/islandpic.jpg') }}" alt="gambor">
+                <img class="image" src="{{ asset($post->image) }}" alt="Post's image">
             </div>
         
             <div class="Title">
-                <p class="title">The Underwater Waterfall phenomenon</p>
+                <p class="title">{{ $post->title }}</p>
             </div>
 
         </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div>
-                    <span href="{{route('ownprof')}}" class="username">John Doe James</span>
+                    <span href="{{route('ownprof')}}" class="username">{{ $post->user->name }}</span>
                     <div class="ratingdisplay">
                             <div class="ratings">
                                 <ion-icon class="dummyrating" name="star"></ion-icon>
@@ -75,14 +75,8 @@
 
             </div>
 
-            <div class="desc">
-                The spectacular mirage occurs when the sand and silt
-                sediments on the ocean floor get sucked down under the
-                influence of stronger underwater currents between the opening
-                of the reefs. The scene resembles the flush of a waterfall
-                cascading into a massive underwater pit.
-            </div>
-            
+            <div class="desc">{{ $post->description }}</div>
+
             <div class="commentbox">
                     <div class="cmtholder">
                         <div class="cmt">
