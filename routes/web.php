@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,5 +48,7 @@ Route::post('store', [PostController::class, 'store']);
 
 require __DIR__.'/auth.php';
 
+//Comments
+Route::post('comment/store', [CommentController::class, 'store']);
 
 

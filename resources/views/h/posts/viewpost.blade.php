@@ -127,7 +127,11 @@
 
                     <hr>
 
+                    <!-- comment form -->
                     <div class="newcommentbox">
+
+                        <form id="comment-form" action = "{{ url('comment/store') }}" class="comment-form" method="post">
+                            @csrf
                         <div class="mydp">
                             <div class="myprofile-pic-container">
                                 <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
@@ -135,10 +139,11 @@
                         </div>
 
                         <div>
-                            <input type="text" class="my-textfield" placeholder="Type your comment...">
+                            <input type="text" class="my-textfield" id="body" name="body" placeholder="Type your comment...">
                         </div>
 
                         <ion-icon class="send" name="send"></ion-icon>
+                        </form>
 
                     </div>
             </div>
