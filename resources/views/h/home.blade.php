@@ -5,7 +5,7 @@
 @section('content')
             <div class="pin_container">
                 @foreach($posts as $key=>$post)
-                    <div class="card card_medium"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia.jpg') }}" alt="asia"></a></div>
+                    <div class="card card_medium"><a href="{{route('viewpost')}}"><img src="{{ asset($post->image) }}" alt="Post Image"></a></div>
                 @endforeach
                 <!-- <div class="card card_small"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia2.jpg') }}" alt="asia2"></a></div>
                 <div class="card card_medium"><a href="{{route('viewpost')}}"><img src="{{ asset('assets/images/asia.jpg') }}" alt="asia"></a></div>
