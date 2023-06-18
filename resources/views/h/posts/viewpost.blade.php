@@ -82,13 +82,17 @@
                         @foreach($post->comments as $key => $comment)
                             <div class="cmt">
                                 <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
-                                    <img src="{{ asset('assets/images/billie.jpg') }}" alt="Profile Photo">
+                                    <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
                                 </div>
+
+                                <!-- <div>
+                                    <span href="{{route('ownprof')}}" class="username" style="text-align:right;">Name</span>
+                                </div> -->
 
                                 <div>
                                     <p class="cmttext">{{ $comment->body }}</p>
                                 </div>
-
+                                
                             </div>
 
                         @endforeach
@@ -97,24 +101,20 @@
                     <hr>
 
                     <!-- comment form -->
-                    <div class="newcommentbox">
-
-                        <form id="comment-form" action = "{{route('comment.store', ['post' => $post->id])}}" class="comment-form" method="post">
-                            @csrf
-                        <div class="mydp">
-                            <div class="myprofile-pic-container">
-                                <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
+                    <form id="comment-form" action = "{{route('comment.store', ['post' => $post->id])}}" class="comment-form" method="post">
+                    @csrf
+                        <div class="newcommentbox">
+                            
+                            <div>
+                                <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo" class="myprofile-pic-container">
                             </div>
                         </div>
+                        <!-- <input type="hidden" value="{{$post->id}}" name="post_id"> -->
                         <input type=">
                         <div>
                             <input type="text" class="my-textfield" id="body" name="body" placeholder="Type your comment...">
                         </div>
-
-                        <ion-icon class="send" name="send"></ion-icon>
-                        </form>
-
-                    </div>
+                    </form>
             </div>
 
             
