@@ -44,6 +44,28 @@
         <br><br><br>
     <body>
         @yield('content')
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+                case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+
+                case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+
+                case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
+                case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break; 
+            }
+            @endif 
+            </script>
             <script src="{{ asset('assets/my_chart.js') }}"></script>
             <script type="module" src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js') }}"></script>
             <script nomodule src="{{ asset('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js') }}"></script>
