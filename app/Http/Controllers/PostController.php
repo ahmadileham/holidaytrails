@@ -47,22 +47,28 @@ class PostController extends Controller
         return back()->with(['message','Post added successfully!']);
     }
 
-    public function uploadImage(Request $request, $post_id){
+    public function viewpost($id){
+        $user = Auth::user();
+        $post = Post::find($id);
 
-        if($request->hasFile('image')){
-
-            $path = public_path("post_images/post_$post_id");
-
-            if(! file_exists($path)){
-                mkdir($path, 0777, true);
-            }
-
-            $image = $request->file('image');
-            $image_image = $image->getClientOriginalName();
-
-            $image->move($path, $image_image);
-        }
-
+        return view('h.viewpost', ['post'=>$post], compact('user'));
     }
+    // public function uploadImage(Request $request, $post_id){
+
+    //     if($request->hasFile('image')){
+
+    //         $path = public_path("post_images/post_$post_id");
+
+    //         if(! file_exists($path)){
+    //             mkdir($path, 0777, true);
+    //         }
+
+    //         $image = $request->file('image');
+    //         $image_image = $image->getClientOriginalName();
+
+    //         $image->move($path, $image_image);
+    //     }
+
+    // }
 
 }

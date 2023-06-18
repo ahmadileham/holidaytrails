@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/viewprofile', [ProfileController::class, 'othersprof'])->name('othersprof');
     Route::get('/myprofile', [ProfileController::class, 'ownprof'])->name('ownprof');
     Route::get('/newpost', [PostController::class, 'newpost'])->name('newpost');
-    Route::get('/viewpost', [ProfileController::class, 'viewpost'])->name('viewpost');
+    Route::get('/post/details/{id}', [PostController::class, 'viewpost'])->name('viewpost');
     Route::get('/logout', [ProfileController::class, 'UserLogout'])->name('user.logout');
 });
 
