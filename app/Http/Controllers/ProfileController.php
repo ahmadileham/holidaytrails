@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -59,8 +60,10 @@ class ProfileController extends Controller
     }
 
     public function home(){
-        $user = Auth::user();
-        return view('h.home',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.home',compact('profileData'));
     }
 
     public function UserLogout(Request $request)
@@ -79,27 +82,64 @@ class ProfileController extends Controller
     // }
 
     public function editpost(){
-        $user = Auth::user();
-        return view('h.editpost',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.editpost',compact('profileData'));
     }
 
     public function analysis(){
-        $user = Auth::user();
-        return view('h.analysis',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.analysis',compact('profileData'));
     }
 
     public function othersprof(){
-        $user = Auth::user();
-        return view('h.othersprof',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.othersprof',compact('profileData'));
     }
 
     public function ownprof(){
-        $user = Auth::user();
-        return view('h.ownprof',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.ownprof',compact('profileData'));
     }
 
     public function viewpost(){
-        $user = Auth::user();
-        return view('h.viewpost',compact('user'));
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.viewpost',compact('profileData'));
+    }
+
+     public function settings(){
+        // $user = Auth::user();
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('h.settings',compact('profileData'));
+    }
+
+    public function settingsStore(Request $request){
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        $data->name=$request->name;
+        $data->about=$request->about;
+        $data->email=$request->email;
+
+        if($request->file('photo')){
+            $file = $request->file('photo');
+            $filename = date('YdmHi').$file->getClientOriginalName();
+            $file->move(public_path('upload'),$filename);
+            $data['photo']=$filename;
+        }
+
+        $data->save();
+
+        return redirect()->back();
     }
 }

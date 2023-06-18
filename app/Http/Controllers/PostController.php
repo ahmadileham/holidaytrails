@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function newpost(){
-        $user = Auth::user();
-        return view('h.posts.newpost',compact('user'));
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        // $user = Auth::user();
+        return view('h.posts.newpost',compact('profileData'));
     }
 
     public function store(Request $request){

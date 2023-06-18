@@ -25,8 +25,8 @@
             </div>
             <ol>
               <li>
-                    @if ($user->photo)
-                        <a href="{{ route('ownprof')}}"><img class="circle" src="{{ $user->photo }}" alt="Profile Picture"></a>
+                    @if (!empty($profileData->photo))
+                        <a href="{{ route('ownprof')}}"><img class="circle" src="{{ (!empty($profileData->photo)) ? url('upload/'.$profileData->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture"></a>
                     @else
                         <a href="{{ route('ownprof')}}"><ion-icon name="person-outline"></ion-icon></a>
                     @endif

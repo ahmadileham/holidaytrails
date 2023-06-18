@@ -7,6 +7,13 @@
     display: block;
 }
 
+.circle1 {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
 #Profile{
     border-radius: 50% ;
     width: 101px;
@@ -225,4 +232,12 @@ ion-icon {
     font-size: 1em;
     color: black;
     font-weight: 500;
+}
+
+.circle:hover {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: block;
+    border: 2px solid white;
 }
