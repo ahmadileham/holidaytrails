@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
                 'name'=>'umar',
                 'email'=>'umar@icloud.com',
                 'password'=>Hash::make('123'),
-                'about'=>'budax jambu'
+                'about'=>'ganu kite'
             ],
 
             [
