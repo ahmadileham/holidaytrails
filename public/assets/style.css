@@ -461,10 +461,23 @@ body{
     color: #FFC107;
 }
 
+.displayimage{
+    width: 40%;
+    margin-top: 8%;
+    margin-right: 10%;
+    height: 72.5%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    box-shadow: inset 0px 5px 0px -5px rgba(0, 0, 0, 0.75),
+    0px 5px 5px -5px rgba(0, 0, 0, 0.75),
+    -5px 0px 5px -5px rgba(0, 0, 0, 0.75),
+    5px 0px 5px -5px rgba(0, 0, 0, 0.75),
+    0px 5px 5px -5px rgba(0, 0, 0, 0.75);
+}
 .postinput{
     display: inline-block;
-    margin-left: 40%;
-    width: 180%;
+    width: 50%;
     background-color: white;
     border-radius: 10px;
     padding: 5px 15px 5px 15px;

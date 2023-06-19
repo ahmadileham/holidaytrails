@@ -81,13 +81,30 @@ body{
 .container{
     margin: 0;
     padding: 0;
-    width: 80vw;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.createpost{
+    margin-top: -8%;
+    padding: 0;
+    height: 100%;
+    width: 100%;
     display: flex;
-    position: absolute;
-    background-color: white;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 50px;
+    background-color: transparent;
+}
+
+#upbutton{
+    background-color: transparent;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    margin-right: 10%;
+}
+
+#image {
+    position: relative;
 }
 
 .fileuploadbutton{
@@ -98,6 +115,7 @@ body{
 .postform{
     float: right;
 }
+
 .pin_container{
     margin: 0;
     padding: 0;
@@ -290,25 +308,29 @@ body{
     border: 1px dashed #FFC107;
 }
 
-.postinput{
-    display: inline-block;
-    margin-left: 40%;
+.postImage{
+    height: 93%;
     width: 100%;
+    padding-top: 3%;
+}
+
+.postinput{
+    align-self: center;
 }
 
 .postinput .input-box{
-    margin: 20px 0 12px 0;
+    /* margin: 20px 0 12px 0; */
     width: calc(100%/2-20px);
     margin-bottom: 15px;
 }
 
 .postinput .input-box input{
     height: 45px;
-    width: 160%;
+    width: 100%;
     outline: none;
     border-radius: 5px;
     border: 1px solid #ccc;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     font-size: 16px;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
@@ -316,12 +338,12 @@ body{
 
 .postinput .input-box textarea{
     height: 200px;
-    width: 160%;
+    width: 100%;
     outline: none;
     resize: none;
     border-radius: 5px;
     border: 1px solid #ccc;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     padding-top: 10px;
     font-size: 16px;
     border-bottom-width: 2px;
@@ -346,7 +368,7 @@ body{
 }
 
 .container form .button{
-    margin-left: 75%;
+    /* margin-left: 75%; */
     width: 100%;
     height: 45px;
 }

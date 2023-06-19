@@ -10,8 +10,7 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    public function create(){
-        // $user = Auth::user();
+    public function newpost(){
         return view('h.posts.newpost');
     }
 
