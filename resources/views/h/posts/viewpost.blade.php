@@ -3,6 +3,7 @@
 @section('title','A Post')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="wrapper">
 
         <div class="photodiv">
@@ -31,47 +32,73 @@
 
                 <div>
                     <span href="{{route('ownprof')}}" class="username">{{ $post->user->name }}</span>
-                    <div class="ratingdisplay">
-                            <div class="ratings">
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="unrateddummy" name="star-outline"></ion-icon>
-                            </div>
 
-                            <div class="numberofratings">(562)</div>
+                    <style>
+                        .rating-stars {
+                            color: gold; /* Change the color as desired */
+                        }
+                    </style>
+                    <!-- Show average rating in star form -->
+                    <div class="rating-stars">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $post->averageRating())
+                                <i class="fas fa-star filled"></i>
+                            @elseif ($i - 0.5 == $post->averageRating())
+                                <i class="fas fa-star-half-alt filled"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
+
+                    <!-- Show rating count -->
+                    <p>({{ $post->ratingCount() }})</p>
                     
                 </div>
 
-                <div class="star_rating">
-                    <button class="star">&#9734;</button>
-                    <button class="star">&#9734;</button>
-                    <button class="star">&#9734;</button>
-                    <button class="star">&#9734;</button>
-                    <button class="star">&#9734;</button>
-                </div>
+                <style>
+    .selected {
+        color: yellow;
+    }
+</style>
 
-                <script>
-                    const allStars = document.querySelectorAll('.star');
+<form action="{{ route('posts.rate', $post) }}" method="POST">
+    @csrf
+    <div class="rating">
+        <span class="star" data-rating="1">&#9734;</span>
+        <span class="star" data-rating="2">&#9734;</span>
+        <span class="star" data-rating="3">&#9734;</span>
+        <span class="star" data-rating="4">&#9734;</span>
+        <span class="star" data-rating="5">&#9734;</span>
+        <input type="hidden" name="rating" id="rating" value="">
+    </div>
+    <button style="border:none;"type="submit">Submit</button>
+</form>
 
-                        allStars.forEach((star, i) => {
-                            star.onclick = function () {
-                                let current_star_level = i + 1;
+<script>
+    // JavaScript code to handle the star rating interaction
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
 
-                                allStars.forEach((star, j) => {
-                                    if (current_star_level >= j + 1) {
-                                        star.innerHTML = '&#9733';
-                                    } else{
-                                        star.innerHTML = '&#9734';
-                                    }
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const ratingValue = star.getAttribute('data-rating');
+            ratingInput.value = ratingValue;
 
-
-                                })
-                            }
-                        })
-                </script>
+            // Update the star styling
+            stars.forEach(s => {
+                const starRating = s.getAttribute('data-rating');
+                if (starRating <= ratingValue) {
+                    s.innerHTML = '&#9733;';
+                    s.classList.add('selected');
+                } else {
+                    s.innerHTML = '&#9734;';
+                    s.classList.remove('selected');
+                }
+            });
+        });
+    });
+</script>
 
             </div>
 
