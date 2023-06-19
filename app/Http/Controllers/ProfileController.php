@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -94,7 +95,8 @@ class ProfileController extends Controller
     public function ownprof(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('h.ownprof',compact('profileData'));
+        $posts = Post::where('userid', $id)->get();
+        return view('h.ownprof',compact('profileData'), ['posts'=>$posts]);
     }
 
     public function viewpost(){
