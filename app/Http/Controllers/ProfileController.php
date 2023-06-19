@@ -80,9 +80,6 @@ class ProfileController extends Controller
     //     return view('h.analysis');
     // }
 
-    public function editpost(){
-        return view('h.editpost');
-    }
 
     public function analysis(){
         return view('h.analysis');

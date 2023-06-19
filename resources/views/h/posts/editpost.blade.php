@@ -3,46 +3,39 @@
 @section('title','Edit Post')
 
 @section('content')
-<div class="container">
-                <div class="uploadedimagescontainer">
-                    <div class="uploadedimage">
-                        <a href="{{asset('assets/images/airport.jpg') }}">
-                            <img src="{{asset('assets/images/airport.jpg') }}">
-                        </a>
+            <div class="container">
+                @if (session('message'))
+                    <p>
+                        {{ session('message') }}
+                    </p>
+                 @endif
+                 <!-- <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
+                    @csrf
+                    <div id="fileuploadbutton" class="input-box">
+                        <input type="file" id="image" name="image" class="form-control"/>
+                        <label for="file"><ion-icon name="cloud-upload-outline"></ion-icon><br>Drag and drop or click<br>to upload</label>
                     </div>
-                    <div class="uploadedimage">
-                        <a href="{{asset('assets/images/kl.jpg') }}">
-                            <img src="{{asset('assets/images/kl.jpg') }}">
-                        </a>
+                </form> -->
+                <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
+                    @csrf
+                    <div class="displayimage">
+                        <div class=postImage id="divImage" src="{{ asset($post->image) }}" alt="Post's Image">
+                        </div>
                     </div>
-                    <div class="uploadedimage">
-                        <a href="{{asset('assets/images/asia2.jpg') }}">
-                            <img src="{{asset('assets/images/asia2.jpg') }}">
-                        </a>
-                    </div>
-                    <div class="uploadedimagemore">
-                        <a href="{{asset('assets/images/france.JPG') }}">
-                            <img src="{{asset('assets/images/france.JPG') }}">
-                        </a>
-                        <div id="morepostindicator">+3</div>
-                    </div>
-                </div>
-
-                <form action="#">
                     <div class="postinput">
-                      <a href="home.html"><ion-icon name="trash-outline"></ion-icon></a>
                         <div class="input-box">
                             <span class="details">Title</span>
-                            <input type="text" placeholder="Add a title" required>
+                            <input type="text" name="title" placeholder="Add a title" value="{{ $post->title }}" required></input>
                         </div>
                         <div class="input-box">
                             <span class="details">Description</span>
-                            <textarea type="text" placeholder="Write a description" required></textarea>
+                            <textarea type="text" name="description" placeholder="Write a description" required>{{ $post->description }}</textarea>
                         </div>
                         <div class="input-box">
                             <span class="details">Location</span>
-                            <input type="text" placeholder="Where was this taken?" required>
+                            <input type="text" name="location" placeholder="Where was this taken?" value="{{ $post->location }}" required>
                         </div>
+                        <a href="home.html"><ion-icon name="trash-outline"></ion-icon></a>
                         <div class="buttoncancel">
                             <input type="submit" value="Cancel Edit"/>
                         </div>
@@ -52,4 +45,19 @@
                     </div>
                 </form>
             </div>
+            <script type="text/javascript">
+                function getImagePreview(event){
+                    var image = URL.createObjectURL(event.target.files[0]);
+                    var imagediv = document.getElementById('divImage');
+                    var newimg = document.createElement('img');
+                    newimg.src = image;
+                    imagediv.appendChild;
+                };
+            </script>
+            <!-- <script>
+                var loadFile = function(event){
+                    var output = document.getElementByID('theImage');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                };
+            </script> -->
 @endsection

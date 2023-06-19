@@ -489,12 +489,12 @@ body{
 }
 
 .postinput ion-icon{
-    color:red;
-    margin-top: 10px;
-    margin-bottom: -30px;
+    color:palevioletred;
     width: 30px;
     height: 30px;
-    margin-left: 90%;
+    margin-bottom: -1%;
+    padding-right: 2.5%;
+    padding-left: 2%;
 }
 .postinput .input-box{
     margin: 20px 0 12px 0;
@@ -555,9 +555,9 @@ body{
 }
 
 .container form .buttonsubmitedit{
-    width: 69%;
+    width: 58%;
     height: 45px;
-    margin-bottom: 10px;
+    margin-bottom: 1%;
     display: inline-block;
 }
 
@@ -593,7 +593,9 @@ form .buttonsubmit input:hover, .buttonsubmitedit input:hover{
 .container form .buttoncancel{
     width: 30%;
     height: 45px;
-    margin-bottom: 10px;
+    margin-bottom: 1%;
+    padding-left: 2.5%;
+    padding-right: 2%;
     display: inline-block;
     margin-right: 1px;
 }

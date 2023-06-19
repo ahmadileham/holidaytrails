@@ -39,6 +39,12 @@ class PostController extends Controller
         return view('h.posts.viewpost', ['post'=>$post], compact('user'));
     }
 
+    public function editpost($id){
+        $post = Post::find($id);
+        $user = Auth::user();
+        return view('h.posts.editpost', ['post'=>$post], compact('user'));
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');

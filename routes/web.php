@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/homepage', [PostController::class, 'home'])->name('home');
     Route::get('/analysis', [ProfileController::class, 'analysis'])->name('analysis');
-    Route::get('/editpost', [ProfileController::class, 'editpost'])->name('editpost');
+    Route::get('/editpost/details/{id}', [PostController::class, 'editpost'])->name('editpost');
     Route::get('/viewprofile', [ProfileController::class, 'othersprof'])->name('othersprof');
     Route::get('/myprofile', [ProfileController::class, 'ownprof'])->name('ownprof');
     Route::get('/newpost', [PostController::class, 'newpost'])->name('newpost');
