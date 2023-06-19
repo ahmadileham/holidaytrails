@@ -18,8 +18,8 @@
                 <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
                     @csrf
                     <div class="displayimage">
-                        <div class=postImage id="divImage">
-                        </div>
+                        <img class=postImage id="divImage" src="">
+                        </img>
                         <div class="input-box" id="upbutton">
                             <input class="form-control" name="upload_file" type="file" id="upload_file" onchange="getImagePreview(event)">
                         </div>

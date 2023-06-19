@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Requests\PostUpdateRequest;
 
 
 class PostController extends Controller
@@ -45,6 +46,18 @@ class PostController extends Controller
         return view('h.posts.editpost', ['post'=>$post], compact('user'));
     }
 
+    public function update(Request $request){
+        $id = Auth::user()->id;
+        $post = Post::find($id);
+
+        $post->title=$request->title;
+        $post->description=$request->description;
+        $post->location=$request->location;
+        $post->save();
+
+        return view('h.posts.viewpost', ['post'=>$post]);
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -59,5 +72,16 @@ class PostController extends Controller
             ->get();
 
         return view('h.posts.search', compact('posts'));
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        $post = $request->post();
+
+        return redirect()->route('myprofile')
+         ->withSuccess(__('Post delete successfully.'));
+        // return Redirect::to('/myprofile');
     }
 }

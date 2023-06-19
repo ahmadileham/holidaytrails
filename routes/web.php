@@ -39,8 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/store', [ProfileController::class, 'settingsStore'])->name('profle.store');
     Route::get('/change/password', [ProfileController::class, 'profilePass'])->name('profile.pass');
     Route::post('/update/password', [ProfileController::class, 'updatePassword'])->name('profle.update.pass');
-
     Route::get('/posts/search', 'App\Http\Controllers\PostController@search')->name('posts.search');
+    // Route::delete('/editpost', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::patch('/post/details/{id}', [PostController::class, 'update'])->name('post.update');
     // Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

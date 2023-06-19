@@ -138,8 +138,7 @@ body{
     margin: 15px 10px;
     overflow: hidden;
     border-radius: var(--card_border_radius);
-    background-color: grey;
-}
+    background-color: grey;}
 
 .card img{
     height: 200%;

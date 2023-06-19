@@ -16,10 +16,12 @@
                         <label for="file"><ion-icon name="cloud-upload-outline"></ion-icon><br>Drag and drop or click<br>to upload</label>
                     </div>
                 </form> -->
-                <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
+
+                <form class="createpost" method="POST" enctype="multipart/form-data" action='{{ url("post/details/$post->id") }}'>
                     @csrf
+                    @method('patch')
                     <div class="displayimage">
-                        <img class=postImage id="divImage" src="{{ asset($post->image) }}" alt="Post's Image"></img>
+                        <img class=postImage id="devImage" src="{{ asset($post->image) }}" alt="Post's Image"></img>
                     </div>
                     <div class="postinput">
                         <div class="input-box">
@@ -33,8 +35,8 @@
                         <div class="input-box">
                             <span class="details">Location</span>
                             <input type="text" name="location" placeholder="Where was this taken?" value="{{ $post->location }}" required>
-                        </div>
-                        <a href="home.html"><ion-icon name="trash-outline"></ion-icon></a>
+                        </div>                           
+                            <a href="home.html"><ion-icon name="trash-outline"></ion-icon></a>
                         <div class="buttoncancel">
                             <input type="submit" value="Cancel Edit"/>
                         </div>
