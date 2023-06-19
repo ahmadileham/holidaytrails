@@ -19,8 +19,7 @@
                 <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
                     @csrf
                     <div class="displayimage">
-                        <div class=postImage id="divImage" src="{{ asset($post->image) }}" alt="Post's Image">
-                        </div>
+                        <img class=postImage id="divImage" src="{{ asset($post->image) }}" alt="Post's Image"></img>
                     </div>
                     <div class="postinput">
                         <div class="input-box">
