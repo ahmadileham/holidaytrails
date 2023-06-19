@@ -217,6 +217,20 @@ ion-icon:hover{
     color: white;
 }
 
+#search-outline{
+    color: red;
+    background-image: none;
+    size: 15%;
+    padding-top: 2%;
+    background: transparent;
+}
+
+#search-outline:hover{
+    color: green;
+    width: 30px;
+    height: 30px;
+}
+
 .circle:hover{
     border-radius: 50% ;
     width: 35px;
@@ -262,19 +276,30 @@ ion-icon:hover{
     padding: 0 12px;
 }
 
+.searchcontainer{
+    background-color: transparent;
+    width: 60%;
+}
 .searchbar{
-    float: left;
-    width: 50%;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    display: inline-block;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
 }
 
-.searchbar input [type=text]{
-    height: 30px;
-    width: 30%;
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-    border-radius: 5px;
+input.searchbar[type="text"]{
+    border: 0px;
+    padding-left: 2%;
+}
+
+input.searchbar[type="text"]:focus{
+    outline-color: #003862;
+    outline-style:solid;
+    outline-width: 2px;
 }
 
 .search-container button {

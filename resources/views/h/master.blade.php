@@ -80,9 +80,9 @@
                 })
                 </script>
             </div> -->
-            <form action="{{ route('posts.search') }}" method="GET">
-                <input type="text" name="query" placeholder="Search by title, location, or name">
-                <button type="submit">Search</button>
+            <form class="searchcontainer" action="{{ route('posts.search') }}" method="GET">
+                <input class ="searchbar" type="text" name="query" placeholder="Search by title, location, or name">
+                <button type="submit" style="display:none;">Search</button>
             </form>
             <ol>
               <li>
