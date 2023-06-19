@@ -3,6 +3,7 @@
 @section('title','A Post')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <div class="wrapper">
 
         <div class="photodiv">
@@ -31,17 +32,27 @@
 
                 <div>
                     <span href="{{route('ownprof')}}" class="username">{{ $post->user->name }}</span>
-                    <div class="ratingdisplay">
-                            <div class="ratings">
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="dummyrating" name="star"></ion-icon>
-                                <ion-icon class="unrateddummy" name="star-outline"></ion-icon>
-                            </div>
 
-                            <div class="numberofratings">(562)</div>
+                    <style>
+                        .rating-stars {
+                            color: gold; /* Change the color as desired */
+                        }
+                    </style>
+                    <!-- Show average rating in star form -->
+                    <div class="rating-stars">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $post->averageRating())
+                                <i class="fas fa-star filled"></i>
+                            @elseif ($i - 0.5 == $post->averageRating())
+                                <i class="fas fa-star-half-alt filled"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
+
+                    <!-- Show rating count -->
+                    <p>({{ $post->ratingCount() }})</p>
                     
                 </div>
 
