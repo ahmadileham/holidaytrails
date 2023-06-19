@@ -74,14 +74,14 @@ class PostController extends Controller
         return view('h.posts.search', compact('posts'));
     }
 
-    public function destroy(Post $post)
+    public function destroy(Request $request)
     {
+        $id = Auth::user()->id;
+        $post = Post::find($id);
         $post->delete();
 
-        $post = $request->post();
-
         return redirect()->route('myprofile')
-         ->withSuccess(__('Post delete successfully.'));
-        // return Redirect::to('/myprofile');
+         ->withSuccess(__('Post deleted successfully.'));
     }
+
 }

@@ -36,9 +36,9 @@
                             <span class="details">Location</span>
                             <input type="text" name="location" placeholder="Where was this taken?" value="{{ $post->location }}" required>
                         </div>                           
-                            <a href="home.html"><ion-icon name="trash-outline"></ion-icon></a>
+                            <a href=""><ion-icon name="trash-outline"></ion-icon></a>
                         <div class="buttoncancel">
-                            <input type="submit" value="Cancel Edit"/>
+                            <input type="submit" href="{{ url('/myprofile') }}" value="Cancel Edit"/>
                         </div>
                         <div class="buttonsubmitedit">
                           <input type="submit" value="Publish Post"/>

@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/editpost', [PostController::class, 'destroy'])->name('post.destroy');
     Route::patch('/post/details/{id}', [PostController::class, 'update'])->name('post.update');
     Route::post('/posts/{post}/rate', [RatingController::class,'store'])->name('posts.rate');
+    Route::delete('/post/details/{id}', [PostController::class, 'destroy'])->name('post.destroy');
     // Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
