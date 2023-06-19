@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update/password', [ProfileController::class, 'updatePassword'])->name('profle.update.pass');
 
     Route::get('/posts/search', 'App\Http\Controllers\PostController@search')->name('posts.search');
+    Route::post('/posts/{post}/rate', [RatingController::class,'store'])->name('posts.rate');
     // Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
