@@ -26,8 +26,8 @@
         <div class="commentdiv">
             <div class="poster">
 
-                <div class="profile-pic-container" href="{{route('ownprof')}}">
-                    <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
+                <div class="profile-pic-container">
+                    <a href="{{ route('ownprof')}}"><img class="circle" src="{{ (!empty($post->user->photo)) ? url('upload/'.$post->user->photo) : url('upload/nophoto.png') }}" alt="Profile Picture"></a>
                 </div>
 
                 <div>
@@ -133,7 +133,7 @@
                         <div class="newcommentbox">
                             
                             <div>
-                                <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo" class="myprofile-pic-container">
+                                <a href="{{ route('ownprof')}}"><img class="circle" src="{{ (!empty($profileData->photo)) ? url('upload/'.$profileData->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture"></a>
                             </div>
                             
                             <div>

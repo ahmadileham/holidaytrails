@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\PostUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -27,10 +28,12 @@ class PostController extends Controller
         $requestData['userid'] = $user->id;
         $fileName = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('images', $fileName, 'public');
-        $requestData["image"] = '/storage/' .$path;
+        $requestData["image"] = 'storage/' .$path;
+        $file = $request->file('image');
+        $file->move(public_path('storage/images'),$fileName);
         Post::create($requestData);
 
-        return back()->with(['message','Post added successfully!']);
+        return back()->with('message','Post added successfully!');
     }
 
     public function viewpost($id){
