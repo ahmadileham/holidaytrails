@@ -133,7 +133,7 @@
                         <div class="newcommentbox">
                             
                             <div>
-                                <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo" class="myprofile-pic-container">
+                                <img class="circle" src="{{ (!empty($user->photo)) ? url('upload/'.$user->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture">
                             </div>
                             
                             <div>
