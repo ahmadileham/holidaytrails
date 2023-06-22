@@ -81,9 +81,18 @@
                 </script>
             </div> -->
             <form class="searchcontainer" action="{{ route('posts.search') }}" method="GET">
-                <input class ="searchbar" type="text" name="query" placeholder="Search by title, location, or name">
-                <button type="submit" style="display:none;">Search</button>
+                <input class="searchbar" type="text" name="query" placeholder="Search by title, location, or name">
+                <select name="rating">
+                    <option value="">All Ratings</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+                <button type="submit">Search</button>
             </form>
+
             <ol>
               <li>
 
