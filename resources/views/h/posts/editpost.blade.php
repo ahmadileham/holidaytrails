@@ -46,7 +46,7 @@
                     </div>
                 </form>
             </div>
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 function getImagePreview(event){
                     var image = URL.createObjectURL(event.target.files[0]);
                     var imagediv = document.getElementById('divImage');
@@ -54,7 +54,7 @@
                     newimg.src = image;
                     imagediv.appendChild;
                 };
-            </script>
+            </script> -->
             <!-- <script>
                 var loadFile = function(event){
                     var output = document.getElementByID('theImage');

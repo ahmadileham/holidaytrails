@@ -18,10 +18,10 @@
                 <form class="createpost" method="POST" enctype="multipart/form-data" action="{{ url('store') }}">
                     @csrf
                     <div class="displayimage">
-                        <img class=postImage id="divImage" src="">
+                        <img class="showImage" id="divImage">
                         </img>
                         <div class="input-box" id="upbutton">
-                            <input class="form-control" name="upload_file" type="file" id="upload_file" onchange="getImagePreview(event)">
+                            <input class="form-control" name="image" type="file" id="image">
                         </div>
                     </div>
                     <div class="postinput">
@@ -43,15 +43,17 @@
                     </div>
                 </form>
             </div>
-            <script type="text/javascript">
-                function getImagePreview(event){
-                    var image = URL.createObjectURL(event.target.files[0]);
-                    var imagediv = document.getElementById('divImage');
-                    var newimg = document.createElement('img');
-                    newimg.src = image;
-                    imagediv.appendChild;
-                };
-            </script>
+            <!-- <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#image').change(function(e){
+                        var reader = new FileReader();
+                        reader.onload = function(e){
+                            $('#divImage').attr('src',e.target.result);
+                        }
+                        reader.readAsDataURL(e.target.files['0']);
+                    });
+                });
+            </script> -->
             <!-- <script>
                 var loadFile = function(event){
                     var output = document.getElementByID('theImage');
