@@ -14,7 +14,7 @@
       @foreach($posts as $key=>$post)
         <div class="card card_large">
           <a href='{{ url("post/details/$post->id") }}'>
-            <img src="{{ asset($post->image) }}" alt="Post Image">
+              <img src="{{ asset($post->image) }}" alt="Post Image">
             <a href='{{ url("editpost/details/$post->id") }}'><ion-icon name="create" class="mak" style="color:white; position: absolute; bottom: 0; right: 0; margin-right: 5%; margin-bottom: 4%;"></ion-icon></a>
           </a>
         </div>

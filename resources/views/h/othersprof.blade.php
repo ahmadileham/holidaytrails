@@ -13,7 +13,8 @@
     <div class="pin_container">
         @foreach($posts as $post)
             <div class="card card_large">
-                <a href='{{ url("post/details/$post->id") }}'><img src="{{ asset($post->image) }}" alt="Post Image">
+                <img src="{{ asset($post->image) }}" alt="Post Image">
+                <a href='{{ url("post/details/$post->id") }}'></a>
             </div>
         @endforeach
     </div>

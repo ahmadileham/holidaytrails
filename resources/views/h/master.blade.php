@@ -82,7 +82,7 @@
             </div> -->
             <form class="searchcontainer" action="{{ route('home') }}" method="GET">
                 <input class="searchbar" type="text" name="query" placeholder="Search by title, location, or name" value="{{ request('query') }}">
-              <select name="rating">
+              <select name="rating" id="ratingfilter">
                   <option value="">All Ratings</option>
                   <option value="1" {{ request('rating') == '1' ? 'selected' : '' }}>1 Star</option>
                   <option value="2" {{ request('rating') == '2' ? 'selected' : '' }}>2 Stars</option>
@@ -90,7 +90,7 @@
                   <option value="4" {{ request('rating') == '4' ? 'selected' : '' }}>4 Stars</option>
                   <option value="5" {{ request('rating') == '5' ? 'selected' : '' }}>5 Stars</option>
               </select>
-              <button type="submit">Search</button>
+              <button type="submit" style="color: white; border: 0px solid transparent; padding: 2px; border-radius: 10px; background: linear-gradient(45deg, #44A08D, #093637);">Filter</button>
             </form>
 
 

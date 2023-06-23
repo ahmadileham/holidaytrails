@@ -89,6 +89,13 @@ body{
     float: right;
 }
 
+#ratingfilter{
+    padding: 2px;
+    border: 0px solid transparent;
+    border-radius: 2px;
+    background: linear-gradient(45deg, #0093E9, #80D0C7);
+}
+#filter
 .pin_container{
     margin: 0;
     padding: 0;
