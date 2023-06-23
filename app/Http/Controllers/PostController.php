@@ -16,33 +16,33 @@ class PostController extends Controller
     }
 
     public function home(Request $request)
-{
-    $user = Auth::user();
-    $rating = $request->query('rating');
-    $searchQuery = $request->query('query');
+    {
+        $user = Auth::user();
+        $rating = $request->query('rating');
+        $searchQuery = $request->query('query');
 
-    $postQuery = Post::query();
+        $postQuery = Post::query();
 
-    if ($rating !== null) {
-        $postQuery->whereHas('ratings', function ($query) use ($rating) {
-            $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
-        });
+        if ($rating !== null) {
+            $postQuery->whereHas('ratings', function ($query) use ($rating) {
+                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
+            });
+        }
+
+        if ($searchQuery) {
+            $postQuery->where(function ($query) use ($searchQuery) {
+                $query->where('title', 'like', "%$searchQuery%")
+                    ->orWhere('location', 'like', "%$searchQuery%")
+                    ->orWhereHas('user', function ($query) use ($searchQuery) {
+                        $query->where('name', 'like', "%$searchQuery%");
+                    });
+            });
+        }
+
+        $posts = $postQuery->get();
+
+        return view('h.home', compact('user', 'posts', 'rating'));
     }
-
-    if ($searchQuery) {
-        $postQuery->where(function ($query) use ($searchQuery) {
-            $query->where('title', 'like', "%$searchQuery%")
-                ->orWhere('location', 'like', "%$searchQuery%")
-                ->orWhereHas('user', function ($query) use ($searchQuery) {
-                    $query->where('name', 'like', "%$searchQuery%");
-                });
-        });
-    }
-
-    $posts = $postQuery->get();
-
-    return view('h.home', compact('user', 'posts', 'rating'));
-}
 
     public function store(Request $request){
         $user = Auth::user();
@@ -81,27 +81,27 @@ class PostController extends Controller
         return view('h.posts.viewpost', ['post'=>$post]);
     }
 
-  public function search(Request $request)
-    {
-        $query = $request->input('query');
-        $rating = $request->input('rating');
+//   public function search(Request $request)
+//     {
+//         $query = $request->input('query');
+//         $rating = $request->input('rating');
 
-        $userIds = User::where('name', 'like', "%$query%")->pluck('id');
+//         $userIds = User::where('name', 'like', "%$query%")->pluck('id');
 
-        $postQuery = Post::where('title', 'like', "%$query%")
-            ->orWhere('location', 'like', "%$query%")
-            ->orWhereIn('userid', $userIds);
+//         $postQuery = Post::where('title', 'like', "%$query%")
+//             ->orWhere('location', 'like', "%$query%")
+//             ->orWhereIn('userid', $userIds);
 
-        if ($rating !== null) {
-            $postQuery->whereHas('ratings', function ($query) use ($rating) {
-                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
-            });
-        }
+//         if ($rating !== null) {
+//             $postQuery->whereHas('ratings', function ($query) use ($rating) {
+//                 $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
+//             });
+//         }
 
-        $posts = $postQuery->get();
+//         $posts = $postQuery->get();
 
-        return view('h.posts.search', compact('posts', 'rating'));
-    }
+//         return view('h.posts.search', compact('posts', 'rating'));
+//     }
 
     public function destroy(Request $request)
     {
