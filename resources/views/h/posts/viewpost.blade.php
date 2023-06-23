@@ -28,7 +28,7 @@
 
                  <a href="{{ route('viewprofile', $post->user->id) }}">
                     <div class="profile-pic-container">
-                        <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
+                        <img src="{{ (!empty($post->user->photo)) ? url('upload/'.$post->user->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture">
                     </div>
                 </a>
 
