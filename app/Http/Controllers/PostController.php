@@ -15,8 +15,11 @@ class PostController extends Controller
         return view('h.posts.newpost');
     }
 
-    public function home(Request $request, $rating = null){
+    public function home(Request $request)
+    {
         $user = Auth::user();
+        $rating = $request->query('rating');
+
         $query = Post::query();
 
         if ($rating !== null) {
@@ -27,7 +30,7 @@ class PostController extends Controller
 
         $posts = $query->get();
 
-        return view('h.home', compact('user', 'posts'));
+        return view('h.home', compact('user', 'posts', 'rating'));
     }
 
     public function store(Request $request){
@@ -67,7 +70,7 @@ class PostController extends Controller
         return view('h.posts.viewpost', ['post'=>$post]);
     }
 
-    public function search(Request $request)
+  public function search(Request $request)
     {
         $query = $request->input('query');
         $rating = $request->input('rating');
@@ -86,7 +89,7 @@ class PostController extends Controller
 
         $posts = $postQuery->get();
 
-        return view('h.posts.search', compact('posts'));
+        return view('h.posts.search', compact('posts', 'rating'));
     }
 
     public function destroy(Request $request)

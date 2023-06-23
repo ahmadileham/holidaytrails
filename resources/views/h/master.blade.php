@@ -80,7 +80,7 @@
                 })
                 </script>
             </div> -->
-            <form class="searchcontainer" action="{{ route('posts.search') }}" method="GET">
+            <form class="searchcontainer" action="{{ route('home') }}" method="GET">
                 <input class="searchbar" type="text" name="query" placeholder="Search by title, location, or name">
                 <select name="rating">
                     <option value="">All Ratings</option>
@@ -92,6 +92,7 @@
                 </select>
                 <button type="submit">Search</button>
             </form>
+
 
             <ol>
               <li>
