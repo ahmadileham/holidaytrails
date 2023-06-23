@@ -4,7 +4,7 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<div class="wrapper">
+<div class="wrapper" style="min-height: fit-content;">
 
         <div class="photodiv">
 
@@ -54,7 +54,7 @@
                     </div>
 
                     <!-- Show rating count -->
-                    <p>({{ $post->ratingCount() }})</p>
+                    <p style="font-size: 14px; color: grey;">({{ $post->ratingCount() }})</p>
                     
                 </div>
 
@@ -66,7 +66,7 @@
 
 <form action="{{ route('posts.rate', $post) }}" method="POST">
     @csrf
-    <div class="rating">
+    <div class="rating" style=" width: max-content; padding-left: 10%;">
         <span class="star" data-rating="1">&#9734;</span>
         <span class="star" data-rating="2">&#9734;</span>
         <span class="star" data-rating="3">&#9734;</span>
@@ -74,7 +74,7 @@
         <span class="star" data-rating="5">&#9734;</span>
         <input type="hidden" name="rating" id="rating" value="">
     </div>
-    <button style="border:none;"type="submit">Submit</button>
+    <button style="border: 0px solid black; padding: 1%; border-radius: 2px; background: linear-gradient(45deg, #44A08D, #093637); cursor: pointer; margin-left: 85%; color: white;"type="submit">Rate</button>
 </form>
 
 <script>
@@ -104,7 +104,7 @@
 
             </div>
 
-            <div class="desc">{{ $post->description }}</div>
+            <div class="desc" style="text-align: left;">{{ $post->description }}</div>
 
             <div class="commentbox">
                     <div class="cmtholder">
@@ -118,7 +118,7 @@
                                     <span href="{{route('ownprof')}}" class="username" style="text-align:right;">Name</span>
                                 </div> -->
 
-                                <div>
+                                <div style="border-bottom: 1px solid gray;">
                                     <p class="cmttext">{{ $comment->body }}</p>
                                 </div>
                                 
@@ -134,7 +134,7 @@
                     @csrf
                         <div class="newcommentbox">
                             
-                            <div>
+                            <div style="padding-left:2%;">
                                 <img class="circle" src="{{ (!empty($user->photo)) ? url('upload/'.$user->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture">
                             </div>
                             

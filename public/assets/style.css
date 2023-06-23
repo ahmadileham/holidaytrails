@@ -338,7 +338,6 @@ body{
     padding: 0;
     background-color: white;
 }
-
 .container{
     margin: 0;
     padding: 0;
@@ -984,7 +983,6 @@ form .buttoncancel input:hover{
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 145%;
     /* background-color: antiquewhite; */
     letter-spacing: 0.01em;
     color: #000000;

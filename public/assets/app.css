@@ -95,7 +95,7 @@ body{
     border-radius: 2px;
     background: linear-gradient(45deg, #0093E9, #80D0C7);
 }
-#filter
+
 .pin_container{
     margin: 0;
     padding: 0;
@@ -477,11 +477,11 @@ form .button input:hover{
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 145%;
     /* background-color: antiquewhite; */
     letter-spacing: 0.01em;
     color: #000000;
     overflow: auto;
+    width: ;
 }
 
 .profile-pic-containercmt {
