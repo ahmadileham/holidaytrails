@@ -15,10 +15,22 @@ class PostController extends Controller
         return view('h.posts.newpost');
     }
 
-    public function home(){
-        $posts = Post::all();
+    public function home(Request $request)
+    {
         $user = Auth::user();
-        return view('h.home',compact('user'),['posts'=>$posts]);
+        $rating = $request->query('rating');
+
+        $query = Post::query();
+
+        if ($rating !== null) {
+            $query->whereHas('ratings', function ($query) use ($rating) {
+                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
+            });
+        }
+
+        $posts = $query->get();
+
+        return view('h.home', compact('user', 'posts', 'rating'));
     }
 
     public function store(Request $request){
@@ -33,11 +45,11 @@ class PostController extends Controller
         return back()->with(['message','Post added successfully!']);
     }
 
-    public function viewpost($id){
-        $post = Post::find($id);
+    public function viewpost($id)
+    {
+        $post = Post::findOrFail($id);
         $user = Auth::user();
-
-        return view('h.posts.viewpost', ['post'=>$post], compact('user'));
+        return view('h.posts.viewpost', compact('post', 'user'));
     }
 
     public function editpost($id){
@@ -58,20 +70,26 @@ class PostController extends Controller
         return view('h.posts.viewpost', ['post'=>$post]);
     }
 
-    public function search(Request $request)
+  public function search(Request $request)
     {
         $query = $request->input('query');
+        $rating = $request->input('rating');
 
-        // Retrieve the user IDs matching the search query
         $userIds = User::where('name', 'like', "%$query%")->pluck('id');
 
-        // Retrieve the posts matching the search query
-        $posts = Post::where('title', 'like', "%$query%")
+        $postQuery = Post::where('title', 'like', "%$query%")
             ->orWhere('location', 'like', "%$query%")
-            ->orWhereIn('userid', $userIds)
-            ->get();
+            ->orWhereIn('userid', $userIds);
 
-        return view('h.posts.search', compact('posts'));
+        if ($rating !== null) {
+            $postQuery->whereHas('ratings', function ($query) use ($rating) {
+                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
+            });
+        }
+
+        $posts = $postQuery->get();
+
+        return view('h.posts.search', compact('posts', 'rating'));
     }
 
     public function destroy(Request $request)

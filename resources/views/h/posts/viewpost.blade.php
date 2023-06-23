@@ -26,12 +26,14 @@
         <div class="commentdiv">
             <div class="poster">
 
-                <div class="profile-pic-container" href="{{route('ownprof')}}">
-                    <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
-                </div>
+                 <a href="{{ route('viewprofile', $post->user->id) }}">
+                    <div class="profile-pic-container">
+                        <img src="{{ (!empty($post->user->photo)) ? url('upload/'.$post->user->photo) : url('upload/nophoto.png') }}" alt="Profile Picture" alt="Profile Picture">
+                    </div>
+                </a>
 
                 <div>
-                    <span href="{{route('ownprof')}}" class="username">{{ $post->user->name }}</span>
+                    <a href="{{ route('viewprofile', $post->user->id) }}" class="username">{{ $post->user->name }}</a>
 
                     <style>
                         .rating-stars {
