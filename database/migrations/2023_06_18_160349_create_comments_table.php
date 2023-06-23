@@ -14,9 +14,15 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->longText('body');
+            //$table->string('user_name');
+            //$table->foreign('user_name')->references('name')->on('users');
+            //$table->string('user_photo');
+            // $table->foreign('user_photo')->references('photo')->on('users');
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
+            // $table->foreign(['user_name','user_photo','post_id'])->references(['name','photo','id'])->on(['users','users','posts']);
             $table->timestamps();
+
         });
     }
 
