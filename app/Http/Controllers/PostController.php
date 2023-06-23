@@ -16,22 +16,33 @@ class PostController extends Controller
     }
 
     public function home(Request $request)
-    {
-        $user = Auth::user();
-        $rating = $request->query('rating');
+{
+    $user = Auth::user();
+    $rating = $request->query('rating');
+    $searchQuery = $request->query('query');
 
-        $query = Post::query();
+    $postQuery = Post::query();
 
-        if ($rating !== null) {
-            $query->whereHas('ratings', function ($query) use ($rating) {
-                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
-            });
-        }
-
-        $posts = $query->get();
-
-        return view('h.home', compact('user', 'posts', 'rating'));
+    if ($rating !== null) {
+        $postQuery->whereHas('ratings', function ($query) use ($rating) {
+            $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
+        });
     }
+
+    if ($searchQuery) {
+        $postQuery->where(function ($query) use ($searchQuery) {
+            $query->where('title', 'like', "%$searchQuery%")
+                ->orWhere('location', 'like', "%$searchQuery%")
+                ->orWhereHas('user', function ($query) use ($searchQuery) {
+                    $query->where('name', 'like', "%$searchQuery%");
+                });
+        });
+    }
+
+    $posts = $postQuery->get();
+
+    return view('h.home', compact('user', 'posts', 'rating'));
+}
 
     public function store(Request $request){
         $user = Auth::user();
