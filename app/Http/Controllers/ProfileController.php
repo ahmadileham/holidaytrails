@@ -85,8 +85,11 @@ class ProfileController extends Controller
         return view('h.analysis');
     }
 
-    public function othersprof(){
-        return view('h.othersprof');
+    public function othersprof($id)
+    {
+        $profileData = User::findOrFail($id);
+        $posts = Post::where('userid', $id)->get();
+        return view('h.othersprof', compact('profileData', 'posts'));
     }
 
     public function ownprof(){

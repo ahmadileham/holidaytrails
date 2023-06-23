@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/homepage', [PostController::class, 'home'])->name('home');
     Route::get('/analysis', [ProfileController::class, 'analysis'])->name('analysis');
     Route::get('/editpost/details/{id}', [PostController::class, 'editpost'])->name('editpost');
-    Route::get('/viewprofile', [ProfileController::class, 'othersprof'])->name('othersprof');
+    Route::get('/viewprofile/{id}', [ProfileController::class, 'othersprof'])->name('viewprofile');
     Route::get('/myprofile', [ProfileController::class, 'ownprof'])->name('ownprof');
     Route::get('/newpost', [PostController::class, 'newpost'])->name('newpost');
     Route::get('/post/details/{id}', [PostController::class, 'viewpost'])->name('viewpost');

@@ -45,11 +45,11 @@ class PostController extends Controller
         return back()->with(['message','Post added successfully!']);
     }
 
-    public function viewpost($id){
-        $post = Post::find($id);
+    public function viewpost($id)
+    {
+        $post = Post::findOrFail($id);
         $user = Auth::user();
-
-        return view('h.posts.viewpost', ['post'=>$post], compact('user'));
+        return view('h.posts.viewpost', compact('post', 'user'));
     }
 
     public function editpost($id){
