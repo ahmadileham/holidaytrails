@@ -80,15 +80,15 @@
                 })
                 </script>
             </div> -->
-            <form class="searchcontainer" action="{{ route('posts.search') }}" method="GET">
-                <input class="searchbar" type="text" name="query" placeholder="Search by title, location, or name" value="{{ request('query') }}">
+            <form class="searchcontainer" action="{{ route('home') }}" method="GET">
+                <input class="searchbar" type="text" name="query" placeholder="Search by title, location, or name">
                 <select name="rating">
                     <option value="">All Ratings</option>
-                    <option value="1" {{ request('rating') == '1' ? 'selected' : '' }}>1 Star</option>
-                    <option value="2" {{ request('rating') == '2' ? 'selected' : '' }}>2 Stars</option>
-                    <option value="3" {{ request('rating') == '3' ? 'selected' : '' }}>3 Stars</option>
-                    <option value="4" {{ request('rating') == '4' ? 'selected' : '' }}>4 Stars</option>
-                    <option value="5" {{ request('rating') == '5' ? 'selected' : '' }}>5 Stars</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
                 </select>
                 <button type="submit">Search</button>
             </form>
