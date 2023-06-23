@@ -24,7 +24,7 @@ class PostController extends Controller
 
         if ($rating !== null) {
             $query->whereHas('ratings', function ($query) use ($rating) {
-                $query->where('rating', $rating);
+                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
             });
         }
 
@@ -83,7 +83,7 @@ class PostController extends Controller
 
         if ($rating !== null) {
             $postQuery->whereHas('ratings', function ($query) use ($rating) {
-                $query->where('rating', $rating);
+                $query->havingRaw('FLOOR(AVG(rating)) = ?', [$rating]);
             });
         }
 
