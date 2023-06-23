@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/post/details/{id}', [PostController::class, 'update'])->name('post.update');
     Route::post('/posts/{post}/rate', [RatingController::class,'store'])->name('posts.rate');
     Route::delete('/post/details/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::post('store', [PostController::class, 'store']);
+    Route::post('comment/{post}', 'App\Http\Controllers\CommentController@store')->name('comment.store');
     // Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -55,13 +57,13 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::post('store', [PostController::class, 'store']);
+// Route::post('store', [PostController::class, 'store']);
 
 require __DIR__.'/auth.php';
 
 //Comments
-Route::post('comment/{post}', 'App\Http\Controllers\CommentController@store')->name('comment.store');
+// Route::post('comment/{post}', 'App\Http\Controllers\CommentController@store')->name('comment.store');
 
-Route::get('/search', function(){
-    return view('search');
-});
+// Route::get('/search', function(){
+//     return view('search');
+// });

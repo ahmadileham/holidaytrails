@@ -110,7 +110,7 @@
                     <div class="cmtholder">
                         @foreach($post->comments as $key => $comment)
                             <div class="cmt">
-                                <div class="profile-pic-containercmt" href="{{route('othersprof')}}">
+                                <div class="profile-pic-containercmt" href="{{route('viewprofile', $post->user->id)}}">
                                     <img src="{{ asset('assets/images/greg.jpg') }}" alt="Profile Photo">
                                 </div>
 
